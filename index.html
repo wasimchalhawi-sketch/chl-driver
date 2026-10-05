@@ -9,7 +9,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="CHL Driver">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="manifest" href="manifest.webmanifest">
+<link rel="manifest" id="mf" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icons/icon-192.png">
 <style>
@@ -19,8 +19,24 @@
 </style>
 </head>
 <body>
-<iframe id="app" src="https://script.google.com/macros/s/AKfycbyLSceecZUNsq4K1CJlJk2VcYsADGeziqj1b0sLsbOsONDkuIm2cCX9cnAN6ncBIbQA/exec" allow="clipboard-write"></iframe>
-<div id="fb"><a href="https://script.google.com/macros/s/AKfycbyLSceecZUNsq4K1CJlJk2VcYsADGeziqj1b0sLsbOsONDkuIm2cCX9cnAN6ncBIbQA/exec">Open the app directly</a></div>
-<script>setTimeout(function(){document.getElementById('fb').style.display='block'},6000);document.getElementById('app').addEventListener('load',function(){document.getElementById('fb').style.display='none'});</script>
+<iframe id="app" allow="clipboard-write"></iframe>
+<div id="fb"><a id="direct" href="https://script.google.com/macros/s/AKfycbyLSceecZUNsq4K1CJlJk2VcYsADGeziqj1b0sLsbOsONDkuIm2cCX9cnAN6ncBIbQA/exec">Open the app directly</a></div>
+<script>
+var EXEC="https://script.google.com/macros/s/AKfycbyLSceecZUNsq4K1CJlJk2VcYsADGeziqj1b0sLsbOsONDkuIm2cCX9cnAN6ncBIbQA/exec";
+var k=(new URLSearchParams(location.search).get('k')||'');
+try{if(k)localStorage.setItem('chl_k',k);else k=localStorage.getItem('chl_k')||'';}catch(e){}
+if(!/^[A-Za-z0-9]{16,64}$/.test(k))k='';
+var q=k?'?k='+k:'';
+document.getElementById('app').src=EXEC+q;
+document.getElementById('direct').href=EXEC+q;
+if(k){try{
+  var base=location.origin+location.pathname.replace(/[^\/]*$/,'');
+  var m={name:"CHL Driver Log",short_name:"CHL Driver",start_url:base+'?k='+k,scope:base,display:"standalone",background_color:"#ffffff",theme_color:"#0a2a66",
+    icons:[{src:base+"icons/icon-192.png",sizes:"192x192",type:"image/png"},{src:base+"icons/icon-512.png",sizes:"512x512",type:"image/png"},{src:base+"icons/maskable-512.png",sizes:"512x512",type:"image/png",purpose:"maskable"}]};
+  document.getElementById('mf').href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/manifest+json'}));
+}catch(e){}}
+setTimeout(function(){document.getElementById('fb').style.display='block'},6000);
+document.getElementById('app').addEventListener('load',function(){document.getElementById('fb').style.display='none'});
+</script>
 </body>
 </html>
