@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CHL Driver</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a2a66">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CHL Driver">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<style>
+  html,body{margin:0;height:100%;background:#f3f4f6}
+  iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#f3f4f6}
+  #fb{position:fixed;left:0;right:0;bottom:0;text-align:center;font:14px Arial,sans-serif;padding:8px;background:#fff;display:none}
+</style>
+</head>
+<body>
+<iframe id="app" src="https://script.google.com/macros/s/AKfycbyLSceecZUNsq4K1CJlJk2VcYsADGeziqj1b0sLsbOsONDkuIm2cCX9cnAN6ncBIbQA/exec" allow="clipboard-write"></iframe>
+<div id="fb"><a href="https://script.google.com/macros/s/AKfycbyLSceecZUNsq4K1CJlJk2VcYsADGeziqj1b0sLsbOsONDkuIm2cCX9cnAN6ncBIbQA/exec">Open the app directly</a></div>
+<script>setTimeout(function(){document.getElementById('fb').style.display='block'},6000);document.getElementById('app').addEventListener('load',function(){document.getElementById('fb').style.display='none'});</script>
+</body>
+</html>
