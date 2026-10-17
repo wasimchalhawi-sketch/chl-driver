@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CHL Office</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CHL Office">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="apple-touch-icon.png">
+<style>
+  html,body{margin:0;height:100%;background:#e8eefb}
+  iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#e8eefb}
+</style>
+</head>
+<body>
+<iframe id="app"></iframe>
+<script>
+var EXEC="https://script.google.com/macros/s/AKfycbx8je0vK_Vc-eH51sE2GtvS9GXoYK09ngkDr9nzEst_Aug6Jwz9KYE12x19zN_6zYWf/exec";
+var m=/[#&]k=([A-Za-z0-9]{16,64})/.exec(location.hash),k=m?m[1]:'';
+try{if(k)localStorage.setItem('chl_office_k',k);else k=localStorage.getItem('chl_office_k')||'';}catch(e){}
+document.getElementById('app').src=EXEC+'?k='+k;
+</script>
+</body>
+</html>
